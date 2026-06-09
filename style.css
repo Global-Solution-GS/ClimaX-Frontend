@@ -1536,7 +1536,13 @@ p {
     padding: 12px 14px;
     background: rgba(255, 255, 255, 0.045);
     color: var(--text);
+    color-scheme: dark;
     outline: 0;
+}
+
+.formulario-contato select option {
+    background: var(--surface-solid);
+    color: var(--text);
 }
 
 .formulario-contato textarea {

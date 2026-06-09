@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var linksMenu = document.querySelectorAll('.atalho-menu');
     var linksNavegacao = document.querySelectorAll('.atalho-navegacao');
 
+    // Fecha o menu quando o usuario escolhe um link ou aperta Esc.
     function fecharMenu() {
         if (botaoMenu === null || painelMenu === null) {
             return;
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.remove('menu-aberto');
     }
 
+    // Controla a abertura do menu em telas menores.
     function iniciarMenuMobile() {
         if (botaoMenu === null || painelMenu === null) {
             return;
@@ -45,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Permite trocar entre os tres temas de cor da pagina.
     function iniciarTemas() {
         var botoesTema = document.querySelectorAll('[data-theme-option]');
         var temaAtual = localStorage.getItem('climax-tema');
@@ -63,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Aplica o tema escolhido e salva a escolha no navegador.
     function aplicarTema(tema, botoesTema) {
         document.body.setAttribute('data-theme', tema);
         localStorage.setItem('climax-tema', tema);
@@ -81,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Muda o visual da barra quando a pagina e rolada.
     function atualizarBarraRolada() {
         if (barraNavegacao === null) {
             return;
@@ -93,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Ativa a rolagem suave para a primeira secao.
     function iniciarRolagem() {
         var botaoRolar = document.getElementById('botao-rolar');
 
@@ -110,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Procura todos os carrosseis da pagina.
     function iniciarCarrosseis() {
         var carrosseis = document.querySelectorAll('[data-carousel]');
 
@@ -118,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Monta os botoes, setas e troca automatica de cada carrossel.
     function configurarCarrossel(carrossel) {
         var quadros = carrossel.querySelectorAll('.quadro-camada, .quadro-imagem');
         var botaoAnterior = carrossel.querySelector('[data-carousel-prev]');
@@ -232,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
         iniciar();
     }
 
+    // Revela os elementos aos poucos conforme aparecem na tela.
     function iniciarRevelacao() {
         var elementos = document.querySelectorAll('.revelar');
 
@@ -262,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Marca no menu qual secao esta aparecendo no momento.
     function iniciarNavegacaoAtiva() {
         var secoes = document.querySelectorAll('main [id]');
 
@@ -286,6 +296,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Atualiza o destaque dos links do menu.
     function atualizarLinkAtivo(idSecao) {
         for (var i = 0; i < linksNavegacao.length; i++) {
             var link = linksNavegacao[i];
@@ -299,6 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Valida o formulario e nao deixa enviar campos vazios.
     function iniciarFormularioContato() {
         var formulario = document.getElementById('formulario-contato');
         var mensagem = document.getElementById('mensagem-formulario');
@@ -306,6 +318,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (formulario === null || mensagem === null) {
             return;
         }
+
+        preencherFormularioSalvo(formulario);
 
         formulario.addEventListener('submit', function (evento) {
             evento.preventDefault();
@@ -331,12 +345,43 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
+            salvarDadosFormulario(formulario);
             mensagem.textContent = 'Interesse registrado. O ClimaX entraria em contato com novos alertas.';
             mensagem.classList.add('sucesso');
-            formulario.reset();
         });
     }
 
+    // Salva os dados preenchidos no localStorage.
+    function salvarDadosFormulario(formulario) {
+        var dados = {
+            nome: formulario.nome.value.trim(),
+            email: formulario.email.value.trim(),
+            cidade: formulario.cidade.value.trim(),
+            perfil: formulario.perfil.value.trim(),
+            mensagem: formulario.mensagem.value.trim()
+        };
+
+        localStorage.setItem('climax-formulario', JSON.stringify(dados));
+    }
+
+    // Carrega os dados salvos quando o usuario volta para a pagina.
+    function preencherFormularioSalvo(formulario) {
+        var dadosSalvos = localStorage.getItem('climax-formulario');
+
+        if (dadosSalvos === null) {
+            return;
+        }
+
+        var dados = JSON.parse(dadosSalvos);
+
+        formulario.nome.value = dados.nome || '';
+        formulario.email.value = dados.email || '';
+        formulario.cidade.value = dados.cidade || '';
+        formulario.perfil.value = dados.perfil || '';
+        formulario.mensagem.value = dados.mensagem || '';
+    }
+
+    // Cria as perguntas do quiz e prepara a correcao.
     function iniciarQuiz() {
         var perguntas = [
             {
@@ -424,6 +469,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Monta as alternativas do quiz usando JavaScript.
     function montarQuiz(perguntas, areaPerguntas) {
         areaPerguntas.innerHTML = '';
 
@@ -457,6 +503,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Confere as respostas e mostra o resultado final.
     function corrigirQuiz(perguntas, formularioQuiz, mensagemQuiz, resultadoQuiz) {
         var pontuacao = 0;
         var respondeuTodas = true;
@@ -487,6 +534,7 @@ document.addEventListener('DOMContentLoaded', function () {
         resultadoQuiz.textContent = criarMensagemResultado(pontuacao, perguntas.length);
     }
 
+    // Cria uma mensagem diferente conforme a pontuacao.
     function criarMensagemResultado(pontuacao, total) {
         var mensagem = 'Você acertou ' + pontuacao + ' de ' + total + ' perguntas. ';
 
