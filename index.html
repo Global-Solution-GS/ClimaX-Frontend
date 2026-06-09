@@ -327,6 +327,63 @@
             </div>
         </section>
 
+        <div class="secao bloco-interativo" id="interativo">
+            <div class="conteiner">
+                <div class="cabecalho-interativo revelar">
+                    <span>Web Development</span>
+                    <h2>Teste sua leitura climática</h2>
+                    <p>Envie seu interesse pelo ClimaX e responda ao quiz sobre risco urbano.</p>
+                </div>
+
+                <div class="grade-interativa">
+                    <form class="formulario-contato revelar" id="formulario-contato" novalidate>
+                        <h3>Receber alerta ClimaX</h3>
+
+                        <label for="nome-contato">Nome completo</label>
+                        <input id="nome-contato" name="nome" type="text" autocomplete="name">
+
+                        <label for="email-contato">E-mail</label>
+                        <input id="email-contato" name="email" type="email" autocomplete="email">
+
+                        <label for="cidade-contato">Cidade</label>
+                        <input id="cidade-contato" name="cidade" type="text" autocomplete="address-level2">
+
+                        <label for="perfil-contato">Perfil</label>
+                        <select id="perfil-contato" name="perfil">
+                            <option value="">Selecione</option>
+                            <option value="morador">Morador</option>
+                            <option value="prefeitura">Prefeitura</option>
+                            <option value="defesa-civil">Defesa Civil</option>
+                            <option value="estudante">Estudante</option>
+                        </select>
+
+                        <label for="mensagem-contato">Como o ClimaX poderia ajudar?</label>
+                        <textarea id="mensagem-contato" name="mensagem" rows="4"></textarea>
+
+                        <p class="mensagem-formulario" id="mensagem-formulario" aria-live="polite"></p>
+
+                        <button class="botao botao-primario" type="submit">Enviar interesse</button>
+                    </form>
+
+                    <div class="quiz-climatico revelar" aria-labelledby="titulo-quiz">
+                        <div class="topo-quiz">
+                            <span>10 perguntas</span>
+                            <h3 id="titulo-quiz">Quiz ClimaX</h3>
+                        </div>
+
+                        <form id="quiz-form" novalidate>
+                            <div class="quiz-perguntas" id="quiz-perguntas"></div>
+                            <p class="mensagem-quiz" id="mensagem-quiz" aria-live="polite"></p>
+                            <button class="botao botao-primario" type="submit">Ver resultado</button>
+                            <button class="botao botao-secundario" id="botao-reiniciar-quiz" type="button">Refazer quiz</button>
+                        </form>
+
+                        <div class="resultado-quiz" id="resultado-quiz" aria-live="polite"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="secao secao-fontes" id="fontes">
             <div class="painel-referencias">
                 <div class="conteiner">
