@@ -1,0 +1,10 @@
+Nome - RM 
+
+Alisson Gomes Pereira - 573681
+Guilherme Vidichosqui Men - 570269
+Gustavo Teotônio Silva - 572803
+Matheus Ferraz Stenzl - 572238
+Thiago Vitelo do Nascimento - 569726
+
+Repositório GitHub
+https://github.com/Global-Solution-GS/ClimaX-Frontend
