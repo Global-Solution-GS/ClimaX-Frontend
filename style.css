@@ -209,6 +209,7 @@ p {
 
 .atalhos-navegacao {
     display: flex;
+    flex: 1;
     align-items: center;
     justify-content: center;
     list-style: none;
@@ -233,6 +234,15 @@ p {
 .atalho-navegacao:hover,
 .atalho-navegacao.ativo {
     color: var(--cyan);
+}
+
+.acoes-navegacao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    min-width: max-content;
+    margin-left: auto;
 }
 
 .botao-cabecalho,
@@ -1452,6 +1462,206 @@ p {
     margin-top: 10px;
 }
 
+/* Formulario e quiz */
+.bloco-interativo {
+    background:
+        linear-gradient(180deg, var(--bg-deep), var(--bg-section) 48%, var(--bg-deep)),
+        var(--bg-deep);
+}
+
+.cabecalho-interativo {
+    max-width: 900px;
+    margin-bottom: 42px;
+}
+
+.cabecalho-interativo span,
+.topo-quiz span {
+    display: block;
+    color: var(--cyan);
+    font-family: var(--font-data);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.cabecalho-interativo h2 {
+    margin-top: 12px;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 4.2rem;
+    line-height: 1;
+}
+
+.cabecalho-interativo p {
+    max-width: 640px;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+.grade-interativa {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.78fr) minmax(0, 1.22fr);
+    gap: 28px;
+    align-items: start;
+}
+
+.formulario-contato,
+.quiz-climatico {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(5, 18, 29, 0.58);
+    box-shadow: var(--shadow);
+}
+
+.formulario-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px;
+}
+
+.formulario-contato h3,
+.topo-quiz h3 {
+    margin: 0;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    line-height: 1.05;
+}
+
+.formulario-contato label {
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+.formulario-contato input,
+.formulario-contato select,
+.formulario-contato textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.045);
+    color: var(--text);
+    color-scheme: dark;
+    outline: 0;
+}
+
+.formulario-contato select option {
+    background: var(--surface-solid);
+    color: var(--text);
+}
+
+.formulario-contato textarea {
+    resize: vertical;
+}
+
+.formulario-contato input:focus,
+.formulario-contato select:focus,
+.formulario-contato textarea:focus {
+    border-color: var(--cyan);
+}
+
+.formulario-contato .campo-invalido {
+    border-color: var(--red);
+}
+
+.mensagem-formulario,
+.mensagem-quiz {
+    min-height: 24px;
+    color: var(--yellow);
+    font-size: 0.92rem;
+}
+
+.mensagem-formulario.sucesso,
+.mensagem-quiz.sucesso {
+    color: var(--green);
+}
+
+.quiz-climatico {
+    padding: 28px;
+}
+
+.topo-quiz {
+    margin-bottom: 24px;
+}
+
+.topo-quiz h3 {
+    margin-top: 8px;
+    font-size: 2.4rem;
+}
+
+.quiz-perguntas {
+    display: grid;
+    gap: 16px;
+}
+
+.pergunta-quiz {
+    min-width: 0;
+    margin: 0;
+    border: 1px solid rgba(243, 251, 255, 0.1);
+    border-radius: 8px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.pergunta-quiz legend {
+    margin-bottom: 14px;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 1.06rem;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.opcao-quiz {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.opcao-quiz input {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    accent-color: var(--cyan);
+}
+
+.pergunta-quiz.campo-invalido {
+    border-color: var(--red);
+}
+
+.quiz-climatico form {
+    display: grid;
+    gap: 14px;
+}
+
+.quiz-climatico .botao {
+    width: fit-content;
+}
+
+.resultado-quiz {
+    margin-top: 20px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px;
+    background: var(--accent-soft);
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.resultado-quiz:empty {
+    display: none;
+}
+
 /* Fontes */
 .secao-fontes {
     display: block;
@@ -1620,6 +1830,7 @@ p {
 @media (max-width: 1180px) {
     .atalhos-navegacao,
     .botao-cabecalho,
+    .acoes-navegacao,
     .seletor-tema-cabecalho {
         display: none;
     }
@@ -1655,7 +1866,8 @@ p {
     .linha-tempo-desafio,
     .vitrine-impacto,
     .grade-ods-impacto,
-    .faixa-provas-impacto {
+    .faixa-provas-impacto,
+    .grade-interativa {
         grid-template-columns: 1fr;
     }
 
@@ -1937,8 +2149,22 @@ p {
     .metricas-impacto,
     .grade-ods-impacto,
     .faixa-provas-impacto,
-    .grade-integracao {
+    .grade-integracao,
+    .grade-interativa {
         grid-template-columns: 1fr;
+    }
+
+    .cabecalho-interativo h2 {
+        font-size: 2.55rem;
+    }
+
+    .formulario-contato,
+    .quiz-climatico {
+        padding: 22px;
+    }
+
+    .quiz-climatico .botao {
+        width: 100%;
     }
 
     .linha-tempo-desafio {

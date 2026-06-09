@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var linksMenu = document.querySelectorAll('.atalho-menu');
     var linksNavegacao = document.querySelectorAll('.atalho-navegacao');
 
+    // Fecha o menu quando o usuario escolhe um link ou aperta Esc.
     function fecharMenu() {
         if (botaoMenu === null || painelMenu === null) {
             return;
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.remove('menu-aberto');
     }
 
+    // Controla a abertura do menu em telas menores.
     function iniciarMenuMobile() {
         if (botaoMenu === null || painelMenu === null) {
             return;
@@ -45,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Permite trocar entre os tres temas de cor da pagina.
     function iniciarTemas() {
         var botoesTema = document.querySelectorAll('[data-theme-option]');
         var temaAtual = localStorage.getItem('climax-tema');
@@ -63,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Aplica o tema escolhido e salva a escolha no navegador.
     function aplicarTema(tema, botoesTema) {
         document.body.setAttribute('data-theme', tema);
         localStorage.setItem('climax-tema', tema);
@@ -81,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Muda o visual da barra quando a pagina e rolada.
     function atualizarBarraRolada() {
         if (barraNavegacao === null) {
             return;
@@ -93,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Ativa a rolagem suave para a primeira secao.
     function iniciarRolagem() {
         var botaoRolar = document.getElementById('botao-rolar');
 
@@ -110,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Procura todos os carrosseis da pagina.
     function iniciarCarrosseis() {
         var carrosseis = document.querySelectorAll('[data-carousel]');
 
@@ -118,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Monta os botoes, setas e troca automatica de cada carrossel.
     function configurarCarrossel(carrossel) {
         var quadros = carrossel.querySelectorAll('.quadro-camada, .quadro-imagem');
         var botaoAnterior = carrossel.querySelector('[data-carousel-prev]');
@@ -232,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
         iniciar();
     }
 
+    // Revela os elementos aos poucos conforme aparecem na tela.
     function iniciarRevelacao() {
         var elementos = document.querySelectorAll('.revelar');
 
@@ -262,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Marca no menu qual secao esta aparecendo no momento.
     function iniciarNavegacaoAtiva() {
         var secoes = document.querySelectorAll('main [id]');
 
@@ -286,6 +296,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Atualiza o destaque dos links do menu.
     function atualizarLinkAtivo(idSecao) {
         for (var i = 0; i < linksNavegacao.length; i++) {
             var link = linksNavegacao[i];
@@ -299,10 +310,251 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Valida o formulario e nao deixa enviar campos vazios.
+    function iniciarFormularioContato() {
+        var formulario = document.getElementById('formulario-contato');
+        var mensagem = document.getElementById('mensagem-formulario');
+
+        if (formulario === null || mensagem === null) {
+            return;
+        }
+
+        preencherFormularioSalvo(formulario);
+
+        formulario.addEventListener('submit', function (evento) {
+            evento.preventDefault();
+
+            var campos = formulario.querySelectorAll('input, select, textarea');
+            var formularioValido = true;
+
+            for (var i = 0; i < campos.length; i++) {
+                var campo = campos[i];
+                var valor = campo.value.trim();
+
+                campo.classList.remove('campo-invalido');
+
+                if (valor === '') {
+                    campo.classList.add('campo-invalido');
+                    formularioValido = false;
+                }
+            }
+
+            if (!formularioValido) {
+                mensagem.textContent = 'Preencha todos os campos antes de enviar.';
+                mensagem.classList.remove('sucesso');
+                return;
+            }
+
+            salvarDadosFormulario(formulario);
+            mensagem.textContent = 'Interesse registrado. O ClimaX entraria em contato com novos alertas.';
+            mensagem.classList.add('sucesso');
+        });
+    }
+
+    // Salva os dados preenchidos no localStorage.
+    function salvarDadosFormulario(formulario) {
+        var dados = {
+            nome: formulario.nome.value.trim(),
+            email: formulario.email.value.trim(),
+            cidade: formulario.cidade.value.trim(),
+            perfil: formulario.perfil.value.trim(),
+            mensagem: formulario.mensagem.value.trim()
+        };
+
+        localStorage.setItem('climax-formulario', JSON.stringify(dados));
+    }
+
+    // Carrega os dados salvos quando o usuario volta para a pagina.
+    function preencherFormularioSalvo(formulario) {
+        var dadosSalvos = localStorage.getItem('climax-formulario');
+
+        if (dadosSalvos === null) {
+            return;
+        }
+
+        var dados = JSON.parse(dadosSalvos);
+
+        formulario.nome.value = dados.nome || '';
+        formulario.email.value = dados.email || '';
+        formulario.cidade.value = dados.cidade || '';
+        formulario.perfil.value = dados.perfil || '';
+        formulario.mensagem.value = dados.mensagem || '';
+    }
+
+    // Cria as perguntas do quiz e prepara a correcao.
+    function iniciarQuiz() {
+        var perguntas = [
+            {
+                texto: 'Qual é o principal problema que o ClimaX quer resolver?',
+                opcoes: ['Falta de redes sociais urbanas', 'Dados climáticos dispersos e difíceis de interpretar', 'Ausência de aplicativos de transporte'],
+                correta: 1
+            },
+            {
+                texto: 'O que o NDVI ajuda a analisar?',
+                opcoes: ['Cobertura e saúde da vegetação', 'Velocidade dos ventos em aeroportos', 'Quantidade de carros por avenida'],
+                correta: 0
+            },
+            {
+                texto: 'Qual tecnologia pode complementar dados de satélite com leitura local?',
+                opcoes: ['Sensores IoT', 'Cartazes impressos', 'Planilhas sem atualização'],
+                correta: 0
+            },
+            {
+                texto: 'O que significa usar um mapa de risco climático urbano?',
+                opcoes: ['Escolher áreas por aparência', 'Visualizar regiões vulneráveis para priorizar ações', 'Remover todos os dados ambientais'],
+                correta: 1
+            },
+            {
+                texto: 'Qual fator aumenta ilhas de calor nas cidades?',
+                opcoes: ['Mais concreto e menos vegetação', 'Mais parques e sombra', 'Mais áreas permeáveis'],
+                correta: 0
+            },
+            {
+                texto: 'Para quem o ClimaX pode apoiar decisões preventivas?',
+                opcoes: ['Somente lojas privadas', 'Prefeituras, Defesa Civil e população', 'Apenas jogos online'],
+                correta: 1
+            },
+            {
+                texto: 'Qual é uma ação possível depois de identificar risco crítico?',
+                opcoes: ['Ignorar o bairro', 'Priorizar drenagem, arborização ou alerta', 'Apagar o mapa'],
+                correta: 1
+            },
+            {
+                texto: 'Por que alertas simples ajudam a população?',
+                opcoes: ['Porque transformam risco em orientação prática', 'Porque escondem o problema', 'Porque substituem qualquer ação pública'],
+                correta: 0
+            },
+            {
+                texto: 'O que o dashboard do ClimaX deve mostrar?',
+                opcoes: ['Indicadores, mapa e recomendações', 'Somente o logotipo da equipe', 'Apenas textos longos sem dados'],
+                correta: 0
+            },
+            {
+                texto: 'Qual é a ideia central do ClimaX?',
+                opcoes: ['Transformar dados ambientais em decisões inteligentes', 'Criar uma loja virtual', 'Trocar imagens por textos sem contexto'],
+                correta: 0
+            }
+        ];
+
+        var areaPerguntas = document.getElementById('quiz-perguntas');
+        var formularioQuiz = document.getElementById('quiz-form');
+        var mensagemQuiz = document.getElementById('mensagem-quiz');
+        var resultadoQuiz = document.getElementById('resultado-quiz');
+        var botaoReiniciar = document.getElementById('botao-reiniciar-quiz');
+
+        if (areaPerguntas === null || formularioQuiz === null || mensagemQuiz === null || resultadoQuiz === null) {
+            return;
+        }
+
+        montarQuiz(perguntas, areaPerguntas);
+
+        formularioQuiz.addEventListener('submit', function (evento) {
+            evento.preventDefault();
+            corrigirQuiz(perguntas, formularioQuiz, mensagemQuiz, resultadoQuiz);
+        });
+
+        if (botaoReiniciar !== null) {
+            botaoReiniciar.addEventListener('click', function () {
+                formularioQuiz.reset();
+                mensagemQuiz.textContent = '';
+                mensagemQuiz.classList.remove('sucesso');
+                resultadoQuiz.textContent = '';
+
+                var blocos = formularioQuiz.querySelectorAll('.pergunta-quiz');
+
+                for (var i = 0; i < blocos.length; i++) {
+                    blocos[i].classList.remove('campo-invalido');
+                }
+            });
+        }
+    }
+
+    // Monta as alternativas do quiz usando JavaScript.
+    function montarQuiz(perguntas, areaPerguntas) {
+        areaPerguntas.innerHTML = '';
+
+        for (var i = 0; i < perguntas.length; i++) {
+            var pergunta = perguntas[i];
+            var fieldset = document.createElement('fieldset');
+            var legenda = document.createElement('legend');
+
+            fieldset.className = 'pergunta-quiz';
+            fieldset.setAttribute('data-question-index', String(i));
+            legenda.textContent = (i + 1) + '. ' + pergunta.texto;
+            fieldset.appendChild(legenda);
+
+            for (var j = 0; j < pergunta.opcoes.length; j++) {
+                var label = document.createElement('label');
+                var input = document.createElement('input');
+                var textoOpcao = document.createElement('span');
+
+                label.className = 'opcao-quiz';
+                input.type = 'radio';
+                input.name = 'pergunta-' + i;
+                input.value = String(j);
+                textoOpcao.textContent = pergunta.opcoes[j];
+
+                label.appendChild(input);
+                label.appendChild(textoOpcao);
+                fieldset.appendChild(label);
+            }
+
+            areaPerguntas.appendChild(fieldset);
+        }
+    }
+
+    // Confere as respostas e mostra o resultado final.
+    function corrigirQuiz(perguntas, formularioQuiz, mensagemQuiz, resultadoQuiz) {
+        var pontuacao = 0;
+        var respondeuTodas = true;
+        var blocos = formularioQuiz.querySelectorAll('.pergunta-quiz');
+
+        for (var i = 0; i < perguntas.length; i++) {
+            var resposta = formularioQuiz.querySelector('input[name="pergunta-' + i + '"]:checked');
+
+            blocos[i].classList.remove('campo-invalido');
+
+            if (resposta === null) {
+                respondeuTodas = false;
+                blocos[i].classList.add('campo-invalido');
+            } else if (Number(resposta.value) === perguntas[i].correta) {
+                pontuacao++;
+            }
+        }
+
+        if (!respondeuTodas) {
+            mensagemQuiz.textContent = 'Responda todas as perguntas antes de ver o resultado.';
+            mensagemQuiz.classList.remove('sucesso');
+            resultadoQuiz.textContent = '';
+            return;
+        }
+
+        mensagemQuiz.textContent = 'Quiz finalizado.';
+        mensagemQuiz.classList.add('sucesso');
+        resultadoQuiz.textContent = criarMensagemResultado(pontuacao, perguntas.length);
+    }
+
+    // Cria uma mensagem diferente conforme a pontuacao.
+    function criarMensagemResultado(pontuacao, total) {
+        var mensagem = 'Você acertou ' + pontuacao + ' de ' + total + ' perguntas. ';
+
+        if (pontuacao >= 8) {
+            mensagem += 'Excelente leitura climática para apoiar cidades resilientes.';
+        } else if (pontuacao >= 5) {
+            mensagem += 'Bom resultado. Ainda dá para revisar alguns conceitos do ClimaX.';
+        } else {
+            mensagem += 'Vale revisar os conceitos de risco, NDVI, sensores e alertas.';
+        }
+
+        return mensagem;
+    }
+
     iniciarMenuMobile();
     iniciarTemas();
     iniciarRolagem();
     iniciarCarrosseis();
     iniciarRevelacao();
     iniciarNavegacaoAtiva();
+    iniciarFormularioContato();
+    iniciarQuiz();
 });
