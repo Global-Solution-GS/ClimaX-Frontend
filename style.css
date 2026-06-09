@@ -209,6 +209,7 @@ p {
 
 .atalhos-navegacao {
     display: flex;
+    flex: 1;
     align-items: center;
     justify-content: center;
     list-style: none;
@@ -233,6 +234,15 @@ p {
 .atalho-navegacao:hover,
 .atalho-navegacao.ativo {
     color: var(--cyan);
+}
+
+.acoes-navegacao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    min-width: max-content;
+    margin-left: auto;
 }
 
 .botao-cabecalho,
@@ -1820,6 +1830,7 @@ p {
 @media (max-width: 1180px) {
     .atalhos-navegacao,
     .botao-cabecalho,
+    .acoes-navegacao,
     .seletor-tema-cabecalho {
         display: none;
     }
