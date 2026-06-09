@@ -19,17 +19,15 @@
             </a>
 
             <ul class="atalhos-navegacao" aria-label="Seções">
-                <li><a href="#climax" class="atalho-navegacao ativo">ClimaX</a></li>
-                <li><a href="#problema" class="atalho-navegacao">Problema</a></li>
-                <li><a href="#camadas" class="atalho-navegacao">Impactos</a></li>
-                <li><a href="#monitoramento" class="atalho-navegacao">Monitoramento</a></li>
-                <li><a href="#desafio" class="atalho-navegacao">Desafio</a></li>
-                <li><a href="#solucoes" class="atalho-navegacao">Soluções</a></li>
-                <li><a href="#impacto" class="atalho-navegacao">Impacto</a></li>
-                <li><a href="#fontes" class="atalho-navegacao">Fontes</a></li>
+                <li><a href="#problema" class="atalho-navegacao ativo">Problema</a></li>
+                <li><a href="#tecnologia" class="atalho-navegacao">Tecnologia</a></li>
+                <li><a href="#objetivos" class="atalho-navegacao">Objetivos</a></li>
+                <li><a href="#publico" class="atalho-navegacao">Público-alvo</a></li>
+                <li><a href="#beneficios" class="atalho-navegacao">Benefícios</a></li>
+                <li><a href="#aplicacao" class="atalho-navegacao">Aplicação</a></li>
             </ul>
 
-            <a href="#desafio" class="botao-cabecalho">Ver desafio</a>
+            <a href="#aplicacao" class="botao-cabecalho">Ver aplicação</a>
 
             <button class="botao-menu" id="botao-menu" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="painel-menu">
                 <span></span>
@@ -41,14 +39,12 @@
 
     <div class="painel-menu" id="painel-menu" role="dialog" aria-modal="true" aria-label="Menu mobile">
         <ul class="lista-menu">
-            <li class="item-menu"><a href="#climax" class="atalho-menu">ClimaX</a></li>
             <li class="item-menu"><a href="#problema" class="atalho-menu">Problema</a></li>
-            <li class="item-menu"><a href="#camadas" class="atalho-menu">Impactos Reais</a></li>
-            <li class="item-menu"><a href="#monitoramento" class="atalho-menu">Monitoramento</a></li>
-            <li class="item-menu"><a href="#desafio" class="atalho-menu">Desafio</a></li>
-            <li class="item-menu"><a href="#solucoes" class="atalho-menu">Soluções Urbanas</a></li>
-            <li class="item-menu"><a href="#impacto" class="atalho-menu">Impacto e ODS</a></li>
-            <li class="item-menu"><a href="#fontes" class="atalho-menu">Fontes Públicas</a></li>
+            <li class="item-menu"><a href="#tecnologia" class="atalho-menu">Tecnologia</a></li>
+            <li class="item-menu"><a href="#objetivos" class="atalho-menu">Objetivos</a></li>
+            <li class="item-menu"><a href="#publico" class="atalho-menu">Público-alvo</a></li>
+            <li class="item-menu"><a href="#beneficios" class="atalho-menu">Benefícios</a></li>
+            <li class="item-menu"><a href="#aplicacao" class="atalho-menu">Aplicação</a></li>
         </ul>
     </div>
 
@@ -79,10 +75,10 @@
             <div class="sobreposicao-problema"></div>
             <div class="conteiner">
                 <div class="arranjo-problema-impacto revelar">
-                    <span class="rotulo-impacto">Os dados existem. O problema é interpretá-los.</span>
-                    <h2 class="chamada-impacto">Quando o risco não é visível,<br>a resposta sempre chega atrasada.</h2>
+                    <span class="rotulo-impacto">Problema</span>
+                    <h2 class="chamada-impacto">Os dados existem. O problema é interpretá-los.</h2>
                     <p class="descricao-impacto">
-                        Temperatura, umidade, vegetação e queimadas hoje aparecem dispersas em fontes separadas. Sem integração, a tomada de decisão pública se torna lenta, pouco visual e ineficaz para priorizar ações preventivas.
+                        Temperatura, umidade, vegetação e queimadas aparecem em fontes separadas. Sem integração, a decisão fica lenta e pouco visual.
                     </p>
                 </div>
             </div>
@@ -90,13 +86,13 @@
         </div>
 
 
-        <section class="secao secao-dados" id="camadas">
+        <section class="secao secao-dados" id="tecnologia">
             <div class="conteiner">
                 <div class="grade-carrossel-lateral">
                     <div class="manifesto-lateral revelar">
-                        <h2>O impacto climático já aparece na imagem.</h2>
-                        <p>O ClimaX cruza imagens orbitais, sensores e fontes públicas para transformar sinais ambientais em leitura de consequência: calor, seca, solo, chuva e fumaça.</p>
-                        <strong class="frase-impacto">Imagem bonita não basta. O dado precisa mostrar onde a cidade vai sofrer primeiro.</strong>
+                        <h2>Tecnologia</h2>
+                        <p>Integramos APIs ambientais, NDVI, sensores IoT e mapas para calcular o IRC urbano.</p>
+                        <strong class="frase-impacto">A plataforma transforma dados ambientais complexos em decisões inteligentes.</strong>
                         <div class="lista-sinais" aria-label="Camadas analisadas">
                             <span>Ilhas de calor</span>
                             <span>Vegetação crítica</span>
@@ -111,35 +107,35 @@
                             <img class="imagem-fundo-camada" src="img/real-urban-heat-buffalo.jpg" alt="Imagem de satélite de Buffalo destacando áreas urbanas associadas a ilhas de calor">
                             <div class="conteudo-camada">
                                 <strong>Ilhas de calor urbanas</strong>
-                                <p>Superfícies impermeáveis acumulam energia e expõem bairros vulneráveis primeiro.</p>
+                                <span class="texto-card">Superfícies impermeáveis acumulam energia e expõem bairros vulneráveis primeiro.</span>
                             </div>
                         </article>
                         <article class="quadro-camada camada-real" data-tone="green">
                             <img class="imagem-fundo-camada" src="img/real-brazil-drought.jpg" alt="Imagem de satélite no Brasil mostrando reservatório baixo, solo exposto e vegetação sob estresse">
                             <div class="conteudo-camada">
                                 <strong>Vegetação em estresse</strong>
-                                <p>Quando o verde recua, a cidade perde resfriamento natural e segurança hídrica.</p>
+                                <span class="texto-card">Quando o verde recua, a cidade perde resfriamento natural e segurança hídrica.</span>
                             </div>
                         </article>
                         <article class="quadro-camada camada-real" data-tone="yellow">
                             <img class="imagem-fundo-camada imagem-fundo-contida" src="img/real-soil-moisture.png" alt="Mapa global de umidade do solo medido por satélite">
                             <div class="conteudo-camada">
                                 <strong>Solo seco ou saturado</strong>
-                                <p>A umidade do solo antecipa seca, alagamento e perda de conforto térmico.</p>
+                                <span class="texto-card">A umidade do solo antecipa seca, alagamento e perda de conforto térmico.</span>
                             </div>
                         </article>
                         <article class="quadro-camada camada-real" data-tone="blue">
                             <img class="imagem-fundo-camada" src="img/real-flood-swot.jpg" alt="Mapa de satélite comparando áreas inundadas antes e depois de chuva extrema na Califórnia">
                             <div class="conteudo-camada">
                                 <strong>Inundação visível do espaço</strong>
-                                <p>Eventos extremos revelam rotas críticas e áreas que precisam de resposta imediata.</p>
+                                <span class="texto-card">Eventos extremos revelam rotas críticas e áreas que precisam de resposta imediata.</span>
                             </div>
                         </article>
                         <article class="quadro-camada camada-real" data-tone="red">
                             <img class="imagem-fundo-camada" src="img/real-brazil-fires.jpg" alt="Imagem de satélite mostrando fumaça e focos de incêndio no Brasil">
                             <div class="conteudo-camada">
                                 <strong>Fumaça também é clima</strong>
-                                <p>Queimadas degradam vegetação, pioram o ar e ampliam o risco muito além do foco inicial.</p>
+                                <span class="texto-card">Queimadas degradam vegetação, pioram o ar e ampliam o risco muito além do foco inicial.</span>
                             </div>
                         </article>
                     </div>
@@ -157,55 +153,55 @@
             </div>
         </section>
 
-        <section class="secao secao-monitoramento secao-produto-destaque" id="monitoramento">
+        <section class="secao secao-monitoramento secao-produto-destaque" id="objetivos">
             <img class="imagem-fundo-produto" src="img/download.png" alt="Interface ClimaX com mapa global de calor, temperatura, umidade e qualidade do ar">
             <div class="sobreposicao-produto"></div>
 
             <div class="conteiner conteudo-produto-destaque">
                 <div class="texto-produto-destaque revelar">
-                    <h2>O produto precisa ser impossível de ignorar.</h2>
-                    <p>O painel traduz sinais ambientais em leitura simples: verde para estabilidade, amarelo para atenção e vermelho para risco crítico. A cidade enxerga onde agir antes que a resposta atrase.</p>
-                    <strong class="frase-impacto">Um dashboard que não só informa. Ele aponta prioridade.</strong>
+                    <h2>Objetivos</h2>
+                    <p>Monitorar regiões urbanas, visualizar indicadores simples e apoiar ações preventivas nas áreas mais vulneráveis.</p>
+                    <strong class="frase-impacto">Menos tempo interpretando dados. Mais tempo agindo.</strong>
                 </div>
 
                 <div class="faixa-dados-produto revelar" aria-label="Indicadores do painel ClimaX">
-                    <div><span>Cidades</span><strong>1.247</strong></div>
-                    <div><span>Alertas ativos</span><strong>23</strong></div>
-                    <div><span>Cobertura estimada</span><strong>98.6%</strong></div>
-                    <div><span>Leitura crítica</span><strong>Calor · Solo · Ar</strong></div>
+                    <div><span>Objetivo 1</span><strong>Antecipar riscos</strong></div>
+                    <div><span>Objetivo 2</span><strong>Priorizar bairros</strong></div>
+                    <div><span>Objetivo 3</span><strong>Orientar equipes</strong></div>
+                    <div><span>Objetivo 4</span><strong>Reduzir danos</strong></div>
                 </div>
             </div>
         </section>
 
-        <section class="secao secao-desafio" id="desafio">
+        <section class="secao secao-desafio" id="publico">
             <div class="sobreposicao-desafio"></div>
             <div class="conteiner">
                 <div class="manifesto-desafio revelar">
-                    <h2>Dados existem. O risco aparece. A cidade precisa decidir.</h2>
-                    <p>O ClimaX nasce para transformar sinais técnicos em prioridade pública: o que monitorar, onde agir e qual intervenção vem primeiro.</p>
+                    <h2>Público-alvo</h2>
+                    <p>População, prefeituras e Defesa Civil usam alertas claros para reduzir exposição e priorizar ações.</p>
                 </div>
 
                 <div class="linha-tempo-desafio revelar">
                     <article>
-                        <h3>Dados existem.</h3>
-                        <p>Satélites, sensores e bases públicas já mostram temperatura, solo, ar, vegetação e chuva.</p>
+                        <h3>População</h3>
+                        <span class="texto-card">Recebe orientação simples sobre calor, fumaça, chuva e áreas vulneráveis.</span>
                     </article>
                     <article>
-                        <h3>Risco aparece.</h3>
-                        <p>O território deixa de ser abstrato e passa a revelar zonas verdes, amarelas e vermelhas.</p>
+                        <h3>Prefeituras</h3>
+                        <span class="texto-card">Priorizam intervenções urbanas com base em risco crítico por região.</span>
                     </article>
                     <article>
-                        <h3>A cidade decide.</h3>
-                        <p>Gestores priorizam arborização, drenagem, alertas e equipes antes da crise escalar.</p>
+                        <h3>Defesa Civil</h3>
+                        <span class="texto-card">Identifica áreas críticas com mais agilidade para ações preventivas.</span>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="secao secao-solucoes" id="solucoes">
+        <section class="secao secao-solucoes" id="beneficios">
             <div class="conteiner">
                 <div class="introducao-solucoes revelar">
-                    <h2>O mapa vira intervenção.</h2>
+                    <h2>Benefícios</h2>
                 </div>
 
                 <div class="vitrine-solucoes">
@@ -252,8 +248,8 @@
 
                     <aside class="painel-solucoes revelar">
                         <h3>Da leitura do risco para a intervenção certa.</h3>
-                        <p>O ClimaX ajuda a priorizar arborização, drenagem, alertas e infraestrutura onde o impacto climático é maior.</p>
-                        <strong class="frase-impacto">A próxima obra pública deve começar pelo mapa de risco.</strong>
+                        <p>O ClimaX reduz interpretação manual e acelera ações em regiões de risco crítico.</p>
+                        <strong class="frase-impacto">A cidade troca relatório disperso por inteligência acionável.</strong>
                         <div class="lista-sinais">
                             <span>Paredes verdes</span>
                             <span>Pavimento permeável</span>
@@ -265,28 +261,28 @@
             </div>
         </section>
 
-        <section class="secao secao-impacto" id="impacto">
+        <section class="secao secao-impacto" id="aplicacao">
             <div class="conteiner">
                 <div class="editorial-impacto revelar">
-                    <h2>Menos relatório. Mais resposta climática.</h2>
-                    <strong class="frase-impacto">A cidade resiliente não espera o desastre para aprender.</strong>
+                    <h2>Aplicação no dia a dia</h2>
+                    <strong class="frase-impacto">Dashboard, mapa, IRC, alertas e recomendações apoiam decisões reais.</strong>
                 </div>
 
                 <div class="grade-ods-impacto revelar">
                     <article>
-                        <span>ODS 9</span>
-                        <strong>Infraestrutura urbana</strong>
-                        <p>Dados de satélite, sensores e bases públicas reunidos para apoiar obra, manutenção e operação da cidade.</p>
+                        <span>Manhã</span>
+                        <strong>Monitorar bairros críticos</strong>
+                        <span class="texto-card">Equipe vê zonas vermelhas antes de vistorias e organiza prioridade.</span>
                     </article>
                     <article>
-                        <span>ODS 11</span>
-                        <strong>Bairros mais preparados</strong>
-                        <p>Leitura territorial para mostrar onde calor, pouca vegetação e chuva forte exigem atenção primeiro.</p>
+                        <span>Tarde</span>
+                        <strong>Orientar moradores</strong>
+                        <span class="texto-card">Alertas explicam calor, fumaça ou chuva com linguagem simples.</span>
                     </article>
                     <article>
-                        <span>ODS 13</span>
-                        <strong>Adaptação climática</strong>
-                        <p>Monitoramento de sinais de risco antes da ocorrência virar emergência para a população.</p>
+                        <span>Operação</span>
+                        <strong>Apoiar equipes de campo</strong>
+                        <span class="texto-card">Painel ajuda a escolher plantio, drenagem ou deslocamento.</span>
                     </article>
                 </div>
 
@@ -307,7 +303,7 @@
             </div>
         </section>
 
-        <section class="secao secao-fontes" id="fontes">
+        <div class="secao secao-fontes" id="fontes">
             <div class="painel-referencias">
                 <div class="conteiner">
                     <h2 class="titulo-referencias revelar">Fontes</h2>
@@ -371,7 +367,7 @@
                     <p class="copy-rodape">&copy; 2026 ClimaX. Todos os direitos reservados.</p>
                 </div>
             </footer>
-        </section>
+        </div>
     </main>
 
     <script src="script.js"></script>
